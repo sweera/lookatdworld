@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% extends "userheader.html"%}
+    {% load static %}
+    <meta charset="UTF-8">
+    <title>{% block title}Signup{% endblock}</title>
+</head>
+<body style="color:white;">
+    {% block content %}
+        <br>
+        <br>
+        <h1 align="center">YOUR BLOG ENTRIES...!!!</h1>
+        <br>
+        <br>
+        <form action="" method="post" enctype="multipart/form-data">
+        <table class="table">
+            {% csrf_token %}
+                {{form.as_table}}
+            <tr><td></td><td><input type="submit" value="Update" class="btn btn-info"/></td></tr>
+
+            <!--<tr>-->
+                <!--<th>Blog Title</th>-->
+                <!--<th>Blog Date</th>-->
+                <!--<th>Blog Category</th>-->
+                <!--<th>Action</th>-->
+                <!--<th>Action</th>-->
+            <!--</tr>-->
+            <!--{% for myrow in myrecords %}-->
+            <!--<tr>-->
+                <!--<td>{{myrow.title|capfirst}}</td>-->
+                <!--<td>{{myrow.blogdate}}</td>-->
+                <!--<td>{{myrow.blog_category}}</td>-->
+
+                <!--<td><a href="{% url 'updatepage' myrow.id %}"><img src="{%static 'images/icon.png' %}" width="45px"></a></td>-->
+                <!--<td><a href="#"><img src="{%static 'images/icon2.png' %}" width="45px"></a></td>-->
+            <!--</tr>-->
+            {% endfor %}
+        </table>
+        </form>
+        <!--{% if messages %}-->
+         <!--<ul class="messages">-->
+             <!--{% for message in messages %}-->
+                <!--<li>{{ message }}</li>-->
+             <!--{% endfor %}-->
+         <!--</ul>-->
+        <!--{% endif %}-->
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $(":input").addClass('form-control');
+            })
+    </script>
+    {% if messages %}
+         <ul class="messages">
+             {% for message in messages %}
+                <li>{{ message }}</li>
+             {% endfor %}
+         </ul>
+        {% endif %}
+
+    {% endblock %}
+</body>
+</html>

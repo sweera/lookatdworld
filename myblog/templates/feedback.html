@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% extends "userheader.html"%}
+    {% load static %}
+    <meta charset="UTF-8">
+    <title>{% block title}Signup{% endblock}</title>
+</head>
+<body>
+    {% block content %}
+        <br>
+        <br>
+        <h1 align="center">SEND US SUGGESTIONS AND TIPS FOR IMPROVEMENT!!!!!</h1>
+        <br>
+        <br>
+        <form action="" method="post">
+            <table align="center" class="form-control">
+                {% csrf_token %}
+                {{form.as_table}}
+
+                <tr><td></td><td><input type="submit" value="Submit" class="btn btn-info"/></td></tr>
+
+            </table>
+        </form>
+
+        {% if messages %}
+         <ul class="messages bg-danger p-2" >
+             {% for message in messages %}
+                <li>{{ message }}</li>
+             {% endfor %}
+         </ul>
+        {% endif %}
+
+
+
+    {% endblock %}
+</body>
+</html>

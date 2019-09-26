@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% extends "userheader.html"%}
+    {% load static %}
+    <meta charset="UTF-8">
+    <title>{% block title}Signup{% endblock}</title>
+</head>
+<body style="color:white;">
+    {% block content %}
+        <br>
+        <br>
+        <h1 align="center">YOUR BLOG ENTRIES...!!!</h1>
+        <br>
+        <br>
+
+        <table class="table bordered table-hover">
+            {% csrf_token %}
+
+            <tr>
+                <th>Blog Title</th>
+                <th>Blog Date</th>
+                <th>Blog Category</th>
+                <th>Blog Image</th>
+            </tr>
+            {% for myrow in myrecords %}
+            <tr>
+                <td><a href="{% url 'detailspage' myrow.id %}">{{myrow.title | capfirst}}</a></td>
+
+
+                <!--<td><img src="{{myrow.blogimage.url}}" width="100px" class="img-rounded"/> </td>-->
+                <td>{{myrow.blogdate}}</td>
+                <td>{{myrow.blog_category}}</td>
+                <td>
+                    <img src="{{ myrow.blog.url|default_if_none:'#' }}" />
+
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+
+        <!--{% if messages %}-->
+         <!--<ul class="messages">-->
+             <!--{% for message in messages %}-->
+                <!--<li>{{ message }}</li>-->
+             <!--{% endfor %}-->
+         <!--</ul>-->
+        <!--{% endif %}-->
+    {% endblock %}
+</body>
+</html>

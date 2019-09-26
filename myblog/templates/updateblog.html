@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% extends "userheader.html"%}
+    {% load static %}
+    <meta charset="UTF-8">
+    <title>{% block title}Signup{% endblock}</title>
+</head>
+<body style="color:white;">
+    {% block content %}
+        <br>
+        <br>
+        <h1 align="center">YOUR BLOG ENTRIES...!!!</h1>
+        <br>
+        <br>
+
+        <table class="table">
+            {% csrf_token %}
+                {{form.as_table}}
+
+            <tr>
+                <th>Blog Title</th>
+                <th>Blog Date</th>
+                <th>Blog Category</th>
+                <th>Blog Image</th>
+                <th>Action</th>
+                <th>Action</th>
+            </tr>
+            {% for myrow in myrecords %}
+            <tr>
+                <td>{{myrow.title|capfirst}}</td>
+                <td>{{myrow.blogdate}}</td>
+                <td>{{myrow.blog_category}}</td>
+                <td>
+                    <img src="{% if myrow.blogimage %}{{myrow.blogimage.url}}{% else %}{% static 'images/default.png'%}{% endif %}" width="100px">
+                </td>
+                <td><a href="{% url 'updatepage' myrow.id %}"><img src="{%static 'images/icon.png' %}" width="45px"></a></td>
+                <td><a href="{% url 'deletepage' myrow.id%}" onclick="return confirmdelete()"><img src="{%static 'images/icon2.png' %}" width="45px"></a></td>
+            </tr>
+            {% endfor %}
+        </table>
+
+        <!--{% if messages %}-->
+         <!--<ul class="messages">-->
+             <!--{% for message in messages %}-->
+                <!--<li>{{ message }}</li>-->
+             <!--{% endfor %}-->
+         <!--</ul>-->
+        <!--{% endif %}-->
+    <script type="text/javascript">
+        function confirmdelete()
+        {
+            answer = confirm("Are you sure you want to delete?")
+            if(answer)
+            {
+                return true
+            }
+            else
+            {
+                return false
+            }
+        }
+    </script>
+    {% endblock %}
+</body>
+</html>

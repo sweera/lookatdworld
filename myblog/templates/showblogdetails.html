@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% extends "userheader.html"%}
+    {% load static %}
+    <meta charset="UTF-8">
+    <title>{% block title}Signup{% endblock}</title>
+</head>
+<body style="color:white;">
+    {% block content %}
+        <style type="text/css">
+    label{font-size:16px; color:black; text-style:normal}
+    h1{color:maroon}
+</style>
+    <br>
+    <br>
+
+ <div class="container">
+     <div class="col-md-6">
+
+    <h1>Blog Details</h1>
+    <br>
+         <br>
+    <table class="table table-bordered table-hover">
+        <tr>
+            <th class="warning">Title</th>
+            <td>{{ record_details.title }}</td>
+        </tr>
+        <tr>
+            <th class="warning">Description</th>
+             <td>{{ record_details.description }}</td>
+        </tr>
+        <tr>
+            <th class="warning">Created Date</th>
+             <td>{{ record_details.blog_creationdate }}</td>
+        </tr>
+        <!--<tr>-->
+            <!--<th class="warning">Updated Date</th>-->
+            <!--<td>{{ record_details.updated_date }}</td>-->
+        <!--</tr>-->
+        <tr>
+            <th class="warning">Category</th>
+            <td>{{ record_details.blog_category }}</td>
+        </tr>
+         <tr>
+            <th class="warning">Image</th>
+            <td>{{ record_details.blogimage }}</td>
+        </tr>
+
+
+
+
+    </table>
+
+     </div>
+  </div>
+{% endblock %}
+</body>
+</html>

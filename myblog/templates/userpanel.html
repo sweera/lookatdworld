@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% extends "userheader.html"%}
+    {% load static %}
+    <meta charset="UTF-8">
+    <title>{% block title}User Panel{% endblock}</title>
+</head>
+<body>
+    {% block content %}
+        <br>
+        <br>
+        <!--<h1 align="center">ALREADY A MEMBER???LOGIN!!!!!!!</h1>-->
+        <h1>{{request.session.username}}'s USER PANEL</h1>
+        <br>
+        <br>
+
+        <table class="table">
+            <tr>
+                <td>
+                    <a href="/newblog"><img src="{%static 'images/add.png' %}" width="150px"> </a>
+                    <a href="/newblog"><h4>Share your thoughts</h4></a>
+                </td>
+                <td>
+                    <a href="/blog-update-list"><img src="{%static 'images/delete.png' %}" width="150px"> </a>
+                    <h4>Delete Blog</h4>
+                </td>
+                <td>
+                    <a href="/blog-update-list"><img src="{%static 'images/refresh.png' %}" width="150px"> </a>
+                    <h4>Update Blog</h4>
+                </td>
+            </tr>
+
+        </table>
+        {% if messages %}
+         <ul class="messages">
+             {% for message in messages %}
+                <li>{{ message }}</li>
+             {% endfor %}
+         </ul>
+        {% endif %}
+
+
+
+    {% endblock %}
+</body>
+</html>
